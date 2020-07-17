@@ -1,9 +1,10 @@
 package Controllers;
 
+import Controllers.Views.TitleScene_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -19,6 +20,7 @@ public class Main extends Application {
 
         this.primaryStage=primaryStage;
         this.initRootLayout();
+        this.showTitleScene();
     }
 
     private void initRootLayout(){
@@ -39,6 +41,27 @@ public class Main extends Application {
 
         }catch (IOException e){
 
+            e.printStackTrace();
+        }
+    }
+
+    public void showTitleScene(){
+
+        try{
+
+            //Load Fxml File
+            FXMLLoader loader= new FXMLLoader();
+            loader.setLocation(Main.class.getResource("Views/TitleScene_UI.fxml"));
+            AnchorPane titleScene=(AnchorPane) loader.load();
+
+            //Set Title Scene Controller
+            TitleScene_Controller controller=loader.getController();
+            controller.setMainApp(this);
+
+            //Set  Title Scene to RootLayout
+            this.rootLayout.setCenter(titleScene);
+
+        }catch (IOException e){
             e.printStackTrace();
         }
     }
