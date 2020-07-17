@@ -21,11 +21,13 @@ public class TitleScene_Controller {
 
     @FXML
     private void onHandleStart(){
-        System.out.println("Game Started");
+
+       this.mainApp.showGameScene();
     }
 
     @FXML
     private void onHandleAbout(){
-        System.out.println("Display Game Info");
+
+       this.mainApp.showAboutScene();
     }
 }

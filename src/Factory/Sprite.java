@@ -72,6 +72,11 @@ public abstract class Sprite {
     }
 
     //*** Movement System ***
+    public void translate(double translateX, double translateY){
+        this.position[0]+=translateX;
+        this.position[1]+=translateY;
+    }
+
     public void translateX(double translate){
         this.position[0]+=translate;
     }

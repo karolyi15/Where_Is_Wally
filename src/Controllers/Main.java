@@ -1,11 +1,14 @@
 package Controllers;
 
+import Controllers.Views.AboutScene_Controller;
+import Controllers.Views.GameScene_Controller;
 import Controllers.Views.TitleScene_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -66,6 +69,55 @@ public class Main extends Application {
         }
     }
 
+    public void showGameScene(){
+
+        try{
+            //Load Fxml File
+            FXMLLoader loader=new FXMLLoader();
+            loader.setLocation(Main.class.getResource("Views/GameScene_UI.fxml"));
+            AnchorPane gameScene=(AnchorPane) loader.load();
+
+            //Set Game Scene Controller
+            GameScene_Controller controller= loader.getController();
+            controller.setMainApp(this);
+
+            //Set Game Scene to RootLayout
+            this.rootLayout.setCenter(gameScene);
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showAboutScene(){
+
+        try{
+            //Load Fxml File
+            FXMLLoader loader= new FXMLLoader();
+            loader.setLocation(Main.class.getResource("Views/AboutScene_UI.fxml"));
+            AnchorPane aboutScreen=(AnchorPane) loader.load();
+
+            //Create Dialog Stage
+            Stage aboutStage = new Stage();
+            aboutStage.setTitle("About");
+            aboutStage.initModality(Modality.WINDOW_MODAL);
+            aboutStage.initOwner(this.primaryStage);
+
+            //Set About Scene Controller
+            AboutScene_Controller controller= loader.getController();
+            controller.setAboutStage(aboutStage);
+
+            //Set About Scene to About Stage
+            Scene  aboutScene =new Scene(aboutScreen);
+            aboutStage.setScene(aboutScene);
+
+            //Wait Until Close
+            aboutStage.showAndWait();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);

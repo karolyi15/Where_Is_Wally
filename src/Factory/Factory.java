@@ -1,4 +1,6 @@
 package Factory;
 
-public class Factory {
+public abstract class Factory {
+
+    public abstract Sprite createProduct();
 }
