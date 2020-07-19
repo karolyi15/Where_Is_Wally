@@ -1,14 +1,37 @@
 package Factory;
 
+import org.json.simple.JSONObject;
+
 public class Character extends Sprite {
 
-    public Character(String imgPath){
-        super(imgPath);
+    //********************************************************************************************************//
+    //********************************************* CLASS FIELDS *********************************************//
+
+    private CharacterType type;
+
+    //********************************************************************************************************//
+    //******************************************** CLASS METHODS *********************************************//
+
+    //*** Constructor ***
+    public Character(JSONObject characterData){
+
+        super(characterData.get("ImgPath").toString().replaceAll("\\\\",""));
+        this.parseType((String) characterData.get("Type"));
     }
 
+    private void parseType(String type){
+
+        switch (type){
+            case "GROUND":
+                this.type=CharacterType.GROUND;
+            case "FLYING":
+                this.type=CharacterType.FLYING;
+        }
+    }
+    //*** Render System ***
     @Override
     public void onUpdate(){
-        System.out.print("Character Update");
+        System.out.print("Character Updated");
     }
 
 }

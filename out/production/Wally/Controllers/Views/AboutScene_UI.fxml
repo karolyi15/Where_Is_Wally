@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Views.AboutScene_Controller">
    <children>
       <Label fx:id="title" layoutX="35.0" layoutY="32.0" text="About the game" />
-      <TextArea fx:id="content" layoutX="94.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextArea fx:id="content" editable="false" layoutX="94.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="ok_Button" layoutX="257.0" layoutY="425.0" mnemonicParsing="false" onAction="#onHandleOk" text="OK" />
    </children>
 </AnchorPane>

@@ -6,6 +6,7 @@ import Controllers.Views.TitleScene_Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -36,7 +37,7 @@ public class Main extends Application {
             this.rootLayout= (BorderPane) loader.load();
 
             //Create RootLayout Scene
-            Scene rootLayoutScene=new Scene(this.rootLayout);
+            Scene rootLayoutScene = new Scene(this.rootLayout);
 
             //Set Scene to Stage
             this.primaryStage.setScene(rootLayoutScene);
@@ -45,6 +46,7 @@ public class Main extends Application {
         }catch (IOException e){
 
             e.printStackTrace();
+            this.showErrorDialog("Error while initializing root layout");
         }
     }
 
@@ -53,12 +55,12 @@ public class Main extends Application {
         try{
 
             //Load Fxml File
-            FXMLLoader loader= new FXMLLoader();
+            FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("Views/TitleScene_UI.fxml"));
-            AnchorPane titleScene=(AnchorPane) loader.load();
+            AnchorPane titleScene = (AnchorPane) loader.load();
 
             //Set Title Scene Controller
-            TitleScene_Controller controller=loader.getController();
+            TitleScene_Controller controller = loader.getController();
             controller.setMainApp(this);
 
             //Set  Title Scene to RootLayout
@@ -66,6 +68,7 @@ public class Main extends Application {
 
         }catch (IOException e){
             e.printStackTrace();
+            this.showErrorDialog("Error while loading title scene");
         }
     }
 
@@ -73,12 +76,12 @@ public class Main extends Application {
 
         try{
             //Load Fxml File
-            FXMLLoader loader=new FXMLLoader();
+            FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("Views/GameScene_UI.fxml"));
-            AnchorPane gameScene=(AnchorPane) loader.load();
+            AnchorPane gameScene = (AnchorPane) loader.load();
 
             //Set Game Scene Controller
-            GameScene_Controller controller= loader.getController();
+            GameScene_Controller controller = loader.getController();
             controller.setMainApp(this);
 
             //Set Game Scene to RootLayout
@@ -86,6 +89,7 @@ public class Main extends Application {
 
         }catch (IOException e){
             e.printStackTrace();
+            this.showErrorDialog("Error while loading game scene");
         }
     }
 
@@ -93,9 +97,9 @@ public class Main extends Application {
 
         try{
             //Load Fxml File
-            FXMLLoader loader= new FXMLLoader();
+            FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("Views/AboutScene_UI.fxml"));
-            AnchorPane aboutScreen=(AnchorPane) loader.load();
+            AnchorPane aboutScreen = (AnchorPane) loader.load();
 
             //Create Dialog Stage
             Stage aboutStage = new Stage();
@@ -104,11 +108,11 @@ public class Main extends Application {
             aboutStage.initOwner(this.primaryStage);
 
             //Set About Scene Controller
-            AboutScene_Controller controller= loader.getController();
+            AboutScene_Controller controller = loader.getController();
             controller.setAboutStage(aboutStage);
 
             //Set About Scene to About Stage
-            Scene  aboutScene =new Scene(aboutScreen);
+            Scene  aboutScene = new Scene(aboutScreen);
             aboutStage.setScene(aboutScene);
 
             //Wait Until Close
@@ -116,7 +120,19 @@ public class Main extends Application {
 
         }catch (IOException e){
             e.printStackTrace();
+            this.showErrorDialog("Error while loading about scene");
         }
+    }
+
+    public void showErrorDialog(String content){
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("There was an error!!");
+        alert.setContentText(content);
+
+        alert.showAndWait();
+
     }
 
     public static void main(String[] args) {

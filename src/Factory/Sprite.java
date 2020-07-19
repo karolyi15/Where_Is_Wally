@@ -8,36 +8,36 @@ public abstract class Sprite {
     //********************************************************************************************************//
     //********************************************* CLASS FIELDS *********************************************//
 
-    //Render System
+    //*** Render System ***
     private String imgPath;
 
     private Image image;
     private double width;
     private double height;
 
-    //Resize System
+    //*** Resize System ***
     private double[] readerPosition;
     private double[] readerDimensions;
 
-    //Positioning System
+    //*** Positioning System ***
     private double[] position;
 
     //********************************************************************************************************//
     //******************************************** CLASS METHODS *********************************************//
 
-    //Constructor
+    //*** Constructor ***
     public Sprite(String imgPath){
 
-        //Render System
+        //*** Render System ***
         this.imgPath=imgPath;
         this.image=new Image(this.imgPath);
         this.width=this.image.getWidth();
         this.height=this.image.getHeight();
 
-        //Physics System
+        //*** Physics System ***
         this.position=new double[2];
 
-        //Resized System
+        //*** Resized System ***
         this.readerPosition=new double[2];
         this.readerDimensions=new double[2];
         this.readerDimensions[0]=this.width;
@@ -126,7 +126,7 @@ public abstract class Sprite {
 
     public abstract void onUpdate();
 
-    //Collide System
+    //*** Collide System ***
     public Rectangle2D getBoundary(){
         return new Rectangle2D(this.position[0],this.position[1],this.width,this.height);
     }
