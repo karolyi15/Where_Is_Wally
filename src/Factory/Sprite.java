@@ -1,6 +1,7 @@
 package Factory;
 
 import javafx.geometry.Rectangle2D;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public abstract class Sprite {
@@ -9,18 +10,18 @@ public abstract class Sprite {
     //********************************************* CLASS FIELDS *********************************************//
 
     //*** Render System ***
-    private String imgPath;
+    protected String imgPath;
 
-    private Image image;
-    private double width;
-    private double height;
+    protected Image image;
+    protected double width;
+    protected double height;
 
     //*** Resize System ***
-    private double[] readerPosition;
-    private double[] readerDimensions;
+    protected double[] readerPosition;
+    protected double[] readerDimensions;
 
     //*** Positioning System ***
-    private double[] position;
+    protected double[] position;
 
     //********************************************************************************************************//
     //******************************************** CLASS METHODS *********************************************//
@@ -124,7 +125,7 @@ public abstract class Sprite {
         return this.height;
     }
 
-    public abstract void onUpdate();
+    public abstract void onUpdate(GraphicsContext drawer);
 
     //*** Collide System ***
     public Rectangle2D getBoundary(){

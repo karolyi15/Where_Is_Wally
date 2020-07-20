@@ -1,5 +1,6 @@
 package Factory;
 
+import javafx.scene.canvas.GraphicsContext;
 import org.json.simple.JSONObject;
 
 public class Background extends Sprite {
@@ -28,8 +29,8 @@ public class Background extends Sprite {
     }
 
     @Override
-    public void onUpdate(){
+    public void onUpdate(GraphicsContext drawer){
 
-        System.out.println("Background updated");
+        drawer.drawImage(this.image,this.getPositionX(),this.getPositionY());
     }
 }

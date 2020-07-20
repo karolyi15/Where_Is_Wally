@@ -1,5 +1,6 @@
 package Factory;
 
+import javafx.scene.canvas.GraphicsContext;
 import org.json.simple.JSONObject;
 
 public class Character extends Sprite {
@@ -7,6 +8,7 @@ public class Character extends Sprite {
     //********************************************************************************************************//
     //********************************************* CLASS FIELDS *********************************************//
 
+    private String id;
     private CharacterType type;
 
     //********************************************************************************************************//
@@ -19,6 +21,10 @@ public class Character extends Sprite {
         this.parseType((String) characterData.get("Type"));
     }
 
+    public Character(String imgPath){
+        super(imgPath);
+    }
+
     private void parseType(String type){
 
         switch (type){
@@ -28,10 +34,20 @@ public class Character extends Sprite {
                 this.type=CharacterType.FLYING;
         }
     }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     //*** Render System ***
     @Override
-    public void onUpdate(){
-        System.out.print("Character Updated");
+    public void onUpdate(GraphicsContext drawer){
+        System.out.println("hola");
+        drawer.drawImage(this.image,this.getPositionX(),this.getPositionY());
     }
 
 }
