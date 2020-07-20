@@ -105,6 +105,23 @@ public abstract class Sprite {
         this.height=height;
     }
 
+    public void scaleImageWidth(double width){
+
+        double percent=(width*100)/this.width;
+
+        this.width=width;
+        this.height=(this.height*percent)/100;
+
+    }
+
+    public void scaleImageHeight(double height){
+
+        double percent=(height*100)/this.height;
+
+        this.height=height;
+        this.width=(this.width*percent)/100;
+    }
+
     public void getImgSection(int positionX, int positionY, int width, int height){
         this.readerPosition[0]=positionX;
         this.readerPosition[1]=positionY;

@@ -2,6 +2,7 @@ package Controllers.Models;
 
 import Factory.Character;
 import Factory.CharacterFactory;
+import Factory.Sprite;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -16,7 +17,7 @@ import java.util.Random;
 public class WallyFactory extends CharacterFactory {
 
     protected JSONArray openSetSpecial;
-    Random random;
+    private Random random;
 
     public WallyFactory(){
 
@@ -55,6 +56,8 @@ public class WallyFactory extends CharacterFactory {
 
             Character tempCharacter= new Character((JSONObject) this.openSetSpecial.get(character));
             tempCharacter.setId(String.valueOf(character));
+            tempCharacter.scaleImageHeight(100);
+            tempCharacter.setPosition(random.nextInt(700),random.nextInt(500));
 
             specialCharacters.add(tempCharacter);
         }
@@ -68,13 +71,26 @@ public class WallyFactory extends CharacterFactory {
 
         Character tempCharacter= new Character((JSONObject) this.openSetSpecial.get(specialCharacter));
         tempCharacter.setId(String.valueOf(specialCharacter));
-
-        tempCharacter.setPosition(100,100);
+        tempCharacter.scaleImageHeight(100);
+        tempCharacter.setPosition(random.nextInt(700),random.nextInt(500));
 
         this.openSetSpecial.remove(specialCharacter);
 
         return tempCharacter;
 
+    }
+
+    @Override
+    public Sprite createProduct(){
+
+        Random random = new Random();
+        int randomCharacter = random.nextInt(this.openSet.size());
+
+        Character tempCharacter=new Character((JSONObject) this.openSet.get(randomCharacter));
+        tempCharacter.scaleImageHeight(100);
+        tempCharacter.setPosition(random.nextInt(700),random.nextInt(500));
+
+        return tempCharacter;
     }
 
 

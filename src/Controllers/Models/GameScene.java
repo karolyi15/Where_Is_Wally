@@ -25,10 +25,12 @@ public class GameScene {
 
     public void setBackground(Background background) {
         this.background = background;
+        this.background.config(700,500);
     }
 
     public void setCharacters(ArrayList<Character> characters) {
         this.characters = characters;
+
     }
 
     public void setWaldosCharacters(ArrayList<Character> waldosCharacters) {
