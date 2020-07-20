@@ -76,7 +76,9 @@ public class GameScene_Controller {
 
         if(result.get() == ButtonType.OK){
 
-            System.out.println("New Game");
+            this.game=this.director.buildGame();
+            this.game.setController(this);
+            this.game.start();
 
         }else{
 

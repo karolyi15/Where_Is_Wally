@@ -34,7 +34,7 @@ public class SceneBuilder {
 
         ArrayList<Character> characters = new ArrayList<>();
 
-        for(int character=0;character<60;character++){
+        for(int character=0;character<80;character++){
 
             characters.add((Character) characterFactory.createProduct());
         }

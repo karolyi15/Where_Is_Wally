@@ -67,12 +67,18 @@ public class GameScene {
 
                   for(int character=0;character<waldosCharacters.size();character++){
 
-                      if(waldosCharacters.get(character).getBoundary().contains(mouseEvent.getX(),mouseEvent.getScreenY())){
-                          waldosCharacters.remove(character);
-                          isGameOver();
+                      Character tempCharacter=waldosCharacters.get(character);
+
+                      if(tempCharacter.getPositionX()<=mouseEvent.getX() & mouseEvent.getX()<= tempCharacter.getPositionX()+ tempCharacter.getWidth()) {
+                          if (tempCharacter.getPositionY() < mouseEvent.getY() & mouseEvent.getY() < tempCharacter.getPositionY() + tempCharacter.getHeight()){
+
+                              System.out.println("Click on Character");
+                              waldosCharacters.remove(character);
+                              isGameOver();
+
+                          }
                       }
                   }
-
                 }
             }
         });
